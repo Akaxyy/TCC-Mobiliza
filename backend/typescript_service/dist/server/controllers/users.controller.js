@@ -1,7 +1,7 @@
 import { supabase } from '../../config/supabase.js';
 export async function createUser(req, res) {
     try {
-        const { user_id, email, name, icon } = req.body;
+        const { user_id, email, name, icon_url } = req.body;
         if (!user_id || !email || !name) {
             return res
                 .status(400)
@@ -9,7 +9,7 @@ export async function createUser(req, res) {
         }
         const { data, error } = await supabase
             .from('users')
-            .insert([{ user_id, email, name, icon }])
+            .insert([{ user_id, email, name, icon_url }])
             .select()
             .single();
         if (error)
