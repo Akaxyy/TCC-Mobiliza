@@ -3,11 +3,11 @@ import { supabase } from '../../config/supabase.js';
 
 export async function createUser(req: Request, res: Response) {
   try {
-    const { user_id, email, name, icon } = req.body as {
+    const { user_id, email, name, icon_url } = req.body as {
       user_id?: string;
       email?: string;
       name?: string;
-      icon?: string | null;
+      icon_url?: string | null;
     };
 
     if (!user_id || !email || !name) {
@@ -18,7 +18,7 @@ export async function createUser(req: Request, res: Response) {
 
     const { data, error } = await supabase
       .from('users')
-      .insert([{ user_id, email, name, icon }])
+      .insert([{ user_id, email, name, icon_url }])
       .select()
       .single();
 
@@ -34,5 +34,6 @@ export async function createUser(req: Request, res: Response) {
     });
   }
 }
+
 
 
