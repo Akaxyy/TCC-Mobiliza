@@ -22,24 +22,6 @@ class SupabaseClientDB:
         Retorna:
             list[dict]: lista de dicionários contendo 'line_id' e 'content'.
         """
-        # all_data = []
-        # batch_size = 1000
-        # start = 0
-
-        # while True:
-        #     response = (
-        #         self.supabase.table("comments")
-        #         .select("line_id, content")
-        #         .order("line_id", desc=True)
-        #         .range(start, start + batch_size - 1)
-        #         .execute()
-        #     )
-        #     data = response.data
-        #     if not data:
-        #         break # Encerra quando não há mais registros
-        #     all_data.extend(data)
-        #     start += batch_size
-
 
         response = (
             self.supabase.table("comments")
@@ -87,4 +69,5 @@ class SupabaseClientDB:
     #     vwsi = AnalisadorSentimentosVWSI(fator_penalizacao=0.5)
     #     resultados = vwsi.analisar_por_linha(get_comments())
     #     print(resultados)
+
     #     save_results_to_supabase(resultados)
