@@ -59,15 +59,3 @@ class SupabaseClientDB:
                 self.supabase.table("line_ranking").upsert(batch).execute()
             except Exception as e:
                 raise(f"Erro ao inserir lote {i // batch_size + 1}: {e}")
-
-
-    # ==========================================================
-    # EXECUÇÃO PRINCIPAL
-    # ==========================================================
-    # if __name__ == "__main__":
-    #     print(len(get_comments()))
-    #     vwsi = AnalisadorSentimentosVWSI(fator_penalizacao=0.5)
-    #     resultados = vwsi.analisar_por_linha(get_comments())
-    #     print(resultados)
-
-    #     save_results_to_supabase(resultados)
